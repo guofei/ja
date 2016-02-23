@@ -158,3 +158,11 @@ module.exports = {
 };
 {% endhighlight js %}
 
+## cssの設定
+web/static/css/app.cssのファイル名をapp.scssに変更
+
+app.scssの中身を以下のように修正：
+{% highlight scss %}
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+{% endhighlight scss %}
