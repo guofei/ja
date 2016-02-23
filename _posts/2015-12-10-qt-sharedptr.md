@@ -1,6 +1,7 @@
 ---
 layout: post
 title: c++のshared_ptrとQtのgui部品を同時に使う時の注意
+date: 2015-12-10 00:23:58 +0900
 ---
 Qtのguiの部品は独自のメモリ管理機能があるので、std::shared_ptrの混合して使う場合は注意しないといけない。
 
