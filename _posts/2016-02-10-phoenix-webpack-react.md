@@ -116,8 +116,8 @@ module.exports = {
 
   resolve: {
     modulesDirectories: [
-      __dirname + '/web/static/js',
-      __dirname + '/node_modules',
+      './web/static/js',
+      './node_modules',
     ],
     extensions: ['', '.js', '.jsx'],
   },
@@ -159,6 +159,12 @@ module.exports = {
 {% endhighlight js %}
 
 ## cssの設定
+web/static/js/app.jsの中に、以下のコードを追加：
+{% highlight js %}
+require('../css/app.scss');
+{% endhighlight js %}
+
+
 web/static/css/app.cssのファイル名をapp.scssに変更
 
 app.scssの中身を以下のように修正：
