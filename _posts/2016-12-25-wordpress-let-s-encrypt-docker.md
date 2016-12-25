@@ -68,6 +68,8 @@ networks:
       name: my-existing-network
 {% endhighlight yml %}
 
+現時点で（2016年12月25日）jrcs/letsencrypt-nginx-proxy-companionを使うと、DeserializationError: Deserialization error: Wrong directory fieldsというエラーが出るので、最新のletsencrypt apiに対応してないみたいです。その代わりにalastaircoote/docker-letsencrypt-nginx-proxy-companionwを使います。
+
 ## appを起動
 {% highlight sh %}
 docker-compose up -d
