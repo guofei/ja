@@ -49,7 +49,6 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./public:/usr/share/nginx/html
       - ./certs:/etc/nginx/certs:ro
       - /etc/nginx/vhost.d
       - /usr/share/nginx/html
@@ -73,3 +72,5 @@ networks:
 {% highlight sh %}
 docker-compose up -d
 {% endhighlight sh %}
+
+参考：https://libertyseeds.ca/2016/09/20/Nginx-Let-s-Encrypt-and-Docker-Compose/
