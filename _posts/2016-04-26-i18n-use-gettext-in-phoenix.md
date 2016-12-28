@@ -61,6 +61,11 @@ $ mix gettext.merge priv/gettext --locale ja
 {% endhighlight sh %}
 を実行する必要があります。
 
+extractとmergeを同時に実行することもできます
+{% highlight sh %}
+$ mix gettext.extract --merge
+{% endhighlight sh %}
+
 上のコマンドを実行すると、/priv/gettext/ja/LC_MESSAGES/default.poなどのファイルが生成されます。
 ファイルの中身は以下のような感じです。
 {% highlight txt %}
