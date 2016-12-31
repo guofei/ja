@@ -5,6 +5,11 @@ title: SentryでElixir(Phoenix)のエラーログを収集
 ## Sentryとは
 リアルタイムなerror trackingサービス、Production環境でエラーが起こる場合、Sentryに投げて、Sentry側でエラーログを管理することができます。official Elixir SDKを提供しています。
 
+## サービスへの登録
+[https://sentry.io](https://sentry.io)
+
+sentry自体は[オープンソース](https://github.com/getsentry/sentry)なので、外部サービスを使いたない場合、自分のサーバーに入れることができます。
+
 ## インストール
 mix.exs
 {% highlight elixir %}
@@ -24,4 +29,8 @@ config :sentry,
   use_error_logger: true
 {% endhighlight elixir %}
 
-これだけで、エラーが起こるとき、自動的にSentryに送ります。
+{% highlight sh %}
+$ mix.deps.get
+{% endhighlight sh %}
+
+これだけで、インストールが完了です。エラーが起こるとき、自動的にSentryに送ります。
