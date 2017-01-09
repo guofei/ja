@@ -15,6 +15,7 @@ title: オブジェクト指向の再考
 有名なのは”時間”という例です．[Why OO Sucks by Joe Armstrong: Objection 2 - Everything has to be an object](http://harmful.cat-v.org/software/OO_programming/why_oo_sucks)
 
 ## 使い分け
+
 ### いつオブジェクトを使う
 データがよく変わるが，振る舞いがあまり変わらないもの．例えば，UIのコンポーネントを作るとき，クリック，ドラッグなどのような操作は決まっているものが多いので，オブジェクトで作ったほうがいいです．
 
