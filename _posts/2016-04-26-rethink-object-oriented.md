@@ -22,3 +22,25 @@ title: オブジェクト指向の再考
 ### いつオブジェクトを使わない
 データがそんなに変わらないが，振る舞いがよく変わるもの．例えば，今の仕事で使っている点，線，面などのデータ構造では，データとして全然変わらないので，オブジェクトを使う意味はないと思います．
 
+自然に純粋な関数になるものをオブジェクトとして使わない。例えば、 x^2 (xはint)を計算する場合、
+{% highlight cpp %}
+int square(int x) {
+  return x * x;
+}
+{% endhighlight cpp %}
+をすればいいです。わざわざ以下のように書くと、余計な状態が出てきて、プログラムが複雑になるし、bugも起こりやすくなってしまいます。
+{% highlight cpp %}
+class Square
+{
+public:
+  Square(int x) {
+    value = x;
+  }
+  int calc() {
+    return value * value;
+  }
+private:
+  int value = 0;
+}
+{% endhighlight cpp %}
+
