@@ -2,7 +2,6 @@
 layout: post
 title: プログラミング時の注意力とBug
 ---
-# きかけ
 最近、Spacemacsの"The best editor is neither Emacs nor Vim, it's Emacs *and* Vim!"という言葉に惹かれて、自分のemacs.dの中にもevil(extensible vi layer)を入れて、vimのキーバインドを使うようにしました。
 
 evilを使っているうちに、１つ気づいたことがあります。それは自分のプログラムの中のBugが以前より増えました。
