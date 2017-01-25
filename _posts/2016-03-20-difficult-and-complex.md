@@ -1,6 +1,7 @@
 ---
 layout: post
 title: プログラミングの難しさと複雑さ
+categories: [Programming]
 ---
 プログラミングする時、
 ## 難しくて，複雑ではないのも

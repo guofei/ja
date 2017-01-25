@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 変数の使い回しはなぜよくないのか
+categories: [Programming]
 ---
 コードレビューの時、以下のようなC++のコードがあった。
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: wordpressとlet's encryptをdockerで構築する
+categories: [Docker]
 ---
 ## ディレクトリを作る
 {% highlight sh %}
@@ -76,3 +77,4 @@ docker-compose up -d
 {% endhighlight sh %}
 
 参考：https://libertyseeds.ca/2016/09/20/Nginx-Let-s-Encrypt-and-Docker-Compose/
+

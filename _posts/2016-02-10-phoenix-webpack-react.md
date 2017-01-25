@@ -2,7 +2,7 @@
 layout: post
 title: Phoenix Webpack React
 date: 2016-02-10 22:11
-tags: [Phoenix, React]
+categories: [Phoenix, React]
 ---
 ## Introduction
 前回の記事でPhoenix + BrunchでReactをインストールする方法を説明したが、今回はBrunchではなく、Phoenix + WebpackでReactをインストール方法を紹介します。
@@ -172,3 +172,5 @@ app.scssの中身を以下のように修正：
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 {% endhighlight scss %}
+
+

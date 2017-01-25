@@ -1,6 +1,7 @@
 ---
 layout: post
 title: SSL/TLS機能付きのEmacs 25をインストール
+categories: [Emacs]
 ---
 el-getをupdateしたら、
 
@@ -23,3 +24,4 @@ $ brew linkapps emacs-mac
 SSL/TLSを有効にするオプションは--with-gnutlsです
 
 参照：https://www.gnu.org/software/emacs/manual/emacs-gnutls.html
+

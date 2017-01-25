@@ -1,6 +1,7 @@
 ---
 layout: post
 title: プログラミング時の注意力とBug
+categories: [Programming]
 ---
 最近、Spacemacsの
 

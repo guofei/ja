@@ -2,7 +2,7 @@
 layout: post
 title: PhoenixとbrunchでReact.jsを使う
 date: 2016-01-25 19:11
-tags: [Phoenix, React]
+categories: [Phoenix, React]
 ---
 ## Introduction
 PhoenixとReact.jsを一緒に使ってみたいので、Phoenix＋Reactをインストールしました。今回はwebpackではなく、PhoenixのデフォルトのBrunchを使います。

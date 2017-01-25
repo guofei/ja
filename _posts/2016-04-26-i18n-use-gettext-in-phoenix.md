@@ -1,6 +1,7 @@
 ---
 layout: post
 title: PhoenixのGettextの多言語化対応I18nのやり方
+categories: [Phoenix, Elixir]
 ---
 ## RailsなどのI18nのやり方
 Railsのアプリケーションを多言語化する場合、keyと定義する必要があります。翻訳文を探すとき、keyを与えて、翻訳文が返されます。例えば、config/locales/ja.ymlファイルで
@@ -173,3 +174,4 @@ end
 {% endhighlight ex %}
 
 サーバーを起動して、localhost:4000?locale=jaにアクセスすると、日本語が表示され、localhost:4000?locale=enにアクセスすると、英語が表示されます。
+
