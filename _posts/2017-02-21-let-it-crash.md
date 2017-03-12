@@ -9,17 +9,25 @@ Elixir/Erlangを勉強してなかった時、c++の例外処理について、�
 Erlangでは、不明なエラーが起こったとき、防御的なプログラミングをすることではなく、processをcrashさせる。crashした後、他のmonitor processに教えて、エラーをどう処理するかを決めてもらう。let it crashでは、以下の条件を満たす必要があります。
 
 ## エラーを処理しないではない
-TODO
+let it crashはエラー処理しないと思ってたが、大きな間違いです。エラー処理しないではなく、プログラマーの代わりにエラー処理を手伝ってくれる「人（process）」がいるのです。
 
-supervisor
+手伝ってもらう前に、crashが起こったことをお知らせする必要があります。erlangでは、linkやmonitorを用いって、crashした情報を外部に通知します。さらに、OTP frameworkでは、この仕組みをもっと抽象化して、supervisorという専用のprocessを提供します。このsupervisor processは他のprocessの管理の仕事がされてます。
 
-one_for_one
+supervisorは以下のようなストラテジに従って、processを管理します。
 
-one_for_all
+* one_for_one
+ある子プロセスが終了したら、そのプロセスだけを再起動します。
 
-rest_for_one
+* one_for_all
+ある子プロセスが終了したら、他のすべての子プロセスを再起動します。
+
+* rest_for_one
+ある子プロセスが終了したら、そのプロセスの次のすべての子プロセスを再起動します。
+
+詳しい説明はこちらへ：http://erlang.org/doc/design_principles/sup_princ.html
 
 ## 素早く再起動しなければならない
+TODO
 
 ## crashしても他のところに影響を与えない
 
