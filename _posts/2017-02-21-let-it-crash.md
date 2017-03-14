@@ -26,10 +26,17 @@ supervisorは以下のようなストラテジに従って、processを管理し
 
 詳しい説明はこちらへ：http://erlang.org/doc/design_principles/sup_princ.html
 
-## 素早く再起動しなければならない
-TODO
+## Processの起動・再起動のoverheadを極小にしなければならない
+極端な例で考えると、あるprocessが１００万のユーザーとつながっています。このprocessを再起動するのに１秒もかかります。この場合、processを再起動すると、１秒間の間で、１００万のユーザーがサービスを利用不可になってしまいます。
+
+Erlangの場合、processの起動のoverheadがすごく小さいので、１ユーザーに対して、１processを起動することがほとんどです。
 
 ## crashしても他のところに影響を与えない
+multi threadの場合、メモリが共有さてたので、一つのthreadがcrashしたら、他のthreadもおかしくなる時がよくあります。この場合、勝手にlet it crashしたら、すべてのデータが壊れてしまいます。
 
-# Erlang以外の言語でlet it crashをしたら大体間違い
+Erlangの場合、actor model＋immutable dataのおかげで、crashしてもエラーが隔離されて、他のところに影響を与えなません。
+
+# Erlang VM系以外の言語でlet it crashをしたら大体間違い
+他の言語では、上のような仕組みをない（akkaを除く）ので、let it crashしたら、ほぼ間違いじゃないでしょう。
+
 
