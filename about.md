@@ -40,7 +40,7 @@ public: true
 * DomainTake - Domain name suggestion tool
 
   Date: 09/2012~10/2012  
-  Technology: iOS, Objective-C, Amazon DynamoDB  
+  Technology: Sinatra, MongoDB, Redis  
   [URL](http://www.domain-take.com/)
 
 * GroupShare - An iOS app that you can share contact informations and photos among multiple phones
