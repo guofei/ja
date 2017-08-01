@@ -14,7 +14,7 @@ profile: A maker and programmer
 github_username:  guofei
 disqus_shortname: kakusblog
 # permalink: /archivers/:title
-gems:
+plugins:
  - jekyll-paginate
  - jekyll-gist
  - jemoji
