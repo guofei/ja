@@ -47,7 +47,9 @@ lib/my_app
 
 変更後、modelsディレクトリがなくなり、代わりに、webの外で機能ごとにディレクトリが作られます。一見そんなに大きな変更ではないが、考え方が大きく変わります。
 
-それは、開発の時、どんなmodelを作るのではなく、どんな機能をどう分けるかを先に考えます。つまり、`boundary`を常に先に考えます。例えば、blog機能を追加したい場合、blogsというディレクトリを作って、その下にpostとcommentというものを作ります。このpostとcommentのAPIをblogs.exで用意すれば、詳細をsalesやweb/controllersにバレる必要がありません。
+それは、開発の時、どんなmodelを作るのではなく、どんな機能をどう分けるかを先に考えます。つまり、`boundary`を常に先に考えます。例えば、blog機能を追加したい場合、blogsというディレクトリを作って、その下にpostとcommentというものを作ります。このpostとcommentのpublic APIをblogs.exで用意すれば、詳細をsalesやweb/controllersにバレる必要がありません。Elixir/Phoenixでは、blogs.exのことをcontextと言います。blogs.exの中に、Blog.create、Blog.create_comment、Blog.list_commentsのようなAPIが定義されています。controllerで直接のAPIを呼びます。APIの中で、データベースを使っているのか、RPCを読んでいるのかを関心する必要がありません。
+
+さらに、blog記事にlikeするような機能を追加するとき、LikeやReactionのようなモデルだけ追加して、controllerでよぶのではなく、blogsにlikeを追加して、Blog.likeで呼んだ方が良いのか、reactions contextを追加して、Reaction.likeで読んだほうが良いのかを考える必要があります。つまり、自然に`boundary`を考えることになります。
 
 この考え方はmicro serviceとかなり近いですね。
 
