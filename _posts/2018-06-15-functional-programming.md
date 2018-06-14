@@ -1,7 +1,8 @@
 ---
 layout: post
-title: functional programming
+title: Functional Programming
 ---
+社内勉強会のため作った資料です。
 
 # Table of Contents
 
