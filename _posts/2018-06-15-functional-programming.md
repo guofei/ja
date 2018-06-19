@@ -1,63 +1,71 @@
 ---
 layout: post
 title: Functional Programming
+categories: [Programming]
 ---
-社内勉強会のため作った資料です。
+社内勉強会の資料です。
 
 # Table of Contents
 
-1.  [Why](#org0195470)
-2.  [関数型プログラミングとは](#orgf0ffdd0)
-3.  [副作用がないコード](#orgc4c647e)
-4.  [副作用がよく出る場所](#org493f589)
-5.  [副作用の例１](#orga5e6b3a)
-6.  [副作用がない](#orge1e5e0a)
-7.  [副作用の例２](#orgc806758)
-8.  [副作用はなぜよくないのか](#org04cb5b3)
-9.  [状態、時間、順番全部可変の場合](#orgf6194a6)
-10. [副作用を避ける](#org05019e8)
-11. [状態を保持](#orgd97d94f)
-12. [Redux](#org6ed51c1)
-13. [関数型がよく使うパターン](#org6938c00)
-14. [Stream 1](#org954f064)
-15. [Stream 2](#org9bd040e)
-16. [関数型のデメリット](#org5ce0cfb)
-17. [オブジェクト指向との関係](#orgb10088d)
-18. [まとめ](#orge29552f)
+1.  [Why](#org0f1d58c)
+2.  [関数型プログラミングの特徴](#orgc481512)
+3.  [副作用とは](#orgc162155)
+4.  [副作用がよく出る場所](#org3678bdb)
+5.  [副作用の例１](#orgebb2cc5)
+6.  [副作用がない](#orgec2195d)
+7.  [副作用の例２](#org95abdc8)
+8.  [副作用はなぜよくないのか](#org59eae26)
+9.  [状態、時間、順番全部可変の場合](#orgfd197d2)
+10. [関数型がよく使うパターン](#org85f75de)
+11. [Reduceの例](#org94500bc)
+12. [中間状態の取得](#orgd211a23)
+13. [オブジェクト指向(カプセル化)＋関数型](#org435f0af)
+14. [Redux](#org30a3c2e)
+15. [Pipeline 1](#org15aa41f)
+16. [Pipeline 2](#org6de5e4d)
+17. [関数型のデメリット](#orge11515d)
+18. [オブジェクト指向との関係](#orgd904809)
+19. [まとめ](#org580c9a8)
 
 
-<a id="org0195470"></a>
+<a id="org0f1d58c"></a>
 
 # Why
 
--   最近の傾向だとオブジェクト指向と関数型が混在することが多い
+-   最近の傾向だとオブジェクト指向と関数型の混在使用多い
     -   Underscore.js, lodash: 関数型ライブラリ
     -   Immutable.js: Immutable
     -   React: Declarative (宣言的)
     -   Redux: reduce
-    -   Promise: Monad
-    -   近年の新しい言語
--   学習コストが下げる
--   プロジェクトで使いたい
+-   新しい言語仕様では関数型の機能が多く含まれている
+    -   Java8~
+        関数型インターフェース
+        Lambda
+    -   ES6
+        Lambda
+        Promise: Monad
+-   チームで使いたい
 
 
-<a id="orgf0ffdd0"></a>
+<a id="orgc481512"></a>
 
-# 関数型プログラミングとは
+# 関数型プログラミングの特徴
 
 -   できるだけ副作用がかいコードを書く
 -   副作用がある場合は範囲を絞って書く
 
 
-<a id="orgc4c647e"></a>
+<a id="orgc162155"></a>
 
-# 副作用がないコード
+# 副作用とは
+
+副作用がないコード
 
 -   同じ条件を与えれば必ず同じ結果が得られる
--   他のいかなる機能の結果にも影響を与えない
+-   他の機能に影響を与えない
 
 
-<a id="org493f589"></a>
+<a id="org3678bdb"></a>
 
 # 副作用がよく出る場所
 
@@ -65,7 +73,7 @@ title: Functional Programming
 -   IO
 
 
-<a id="orga5e6b3a"></a>
+<a id="orgebb2cc5"></a>
 
 # 副作用の例１
 
@@ -86,7 +94,7 @@ Quiz: 出力結果は？
     inc2();
 
 
-<a id="orge1e5e0a"></a>
+<a id="orgec2195d"></a>
 
 # 副作用がない
 
@@ -106,7 +114,7 @@ Quiz: 出力結果は？
     func();
 
 
-<a id="orgc806758"></a>
+<a id="org95abdc8"></a>
 
 # 副作用の例２
 
@@ -128,7 +136,7 @@ Quiz: 出力結果は？
     calc.multiply(2);
 
 
-<a id="org04cb5b3"></a>
+<a id="org59eae26"></a>
 
 # 副作用はなぜよくないのか
 
@@ -146,7 +154,7 @@ Quiz: 出力結果は？
         calc.plus(1);
 
 
-<a id="orgf6194a6"></a>
+<a id="orgfd197d2"></a>
 
 # 状態、時間、順番全部可変の場合
 
@@ -159,9 +167,25 @@ Quiz: 出力結果は？
     calc.multiply(2);
 
 
-<a id="org05019e8"></a>
+<a id="org85f75de"></a>
 
-# 副作用を避ける
+# 関数型がよく使うパターン
+
+-   map
+-   reduce
+-   filter
+-   pipeline(stream)
+
+メリット
+
+-   副作用を避けられる
+-   ループを抽象化
+-   関数組み合わせで再利用可能
+
+
+<a id="org94500bc"></a>
+
+# Reduceの例
 
     function reducer(accumulator, {type: t, value: v}) {
       switch (t) {
@@ -177,9 +201,18 @@ Quiz: 出力結果は？
     _.reduce(input, reducer);
 
 
-<a id="orgd97d94f"></a>
+<a id="orgd211a23"></a>
 
-# 状態を保持
+# 中間状態の取得
+
+    const state0 = {};
+    const state1 = reducer(state0, {type: '+', value: 1});
+    const state2 = reducer(state1, {type: '*', value: 1});
+
+
+<a id="org435f0af"></a>
+
+# オブジェクト指向(カプセル化)＋関数型
 
     const createStore = (reducer) => {
       let state;
@@ -197,7 +230,7 @@ Quiz: 出力結果は？
     dispatch({type: '*', value: 2});
 
 
-<a id="org6ed51c1"></a>
+<a id="org30a3c2e"></a>
 
 # Redux
 
@@ -210,17 +243,11 @@ Quiz: 出力結果は？
     dispatch({type: 'SELECT_BUTTON', value: 'v2'});
 
 
-<a id="org6938c00"></a>
+<a id="org15aa41f"></a>
 
-# 関数型がよく使うパターン
+# Pipeline 1
 
--   stream
-    WebFramework の例
-
-
-<a id="org954f064"></a>
-
-# Stream 1
+Web Framework
 
 -   データ構造
     
@@ -235,13 +262,16 @@ Quiz: 出力結果は？
           },
           assigns: {
             userData1: 'user',
-          } 
+          },
+          ...
         }
 
 
-<a id="org9bd040e"></a>
+<a id="org6de5e4d"></a>
 
-# Stream 2
+# Pipeline 2
+
+Web Framework
 
 -   データの流れ
     connection -> router() -> pipelines() -> controller() -> model()
@@ -249,21 +279,6 @@ Quiz: 出力結果は？
     const connection3 = pipelines(connection2);
     const connection4 = controller(connection3);
     const connection5 = model(connection4);
-    
-    <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-    
-    
-    <colgroup>
-    <col  class="org-left" />
-    </colgroup>
-    <tbody>
-    <tr>
-    <td class="org-left">&#xa0;</td>
-    </tr>
-    </tbody>
-    </table>
-    
-    \_.chain(connection).router().pipelines().controller().model().value();
 
 -   controllerの中身
     connection -> common<sub>services</sub>() -> action()
@@ -271,16 +286,16 @@ Quiz: 出力結果は？
     const connection2 = action(connection1);
 
 
-<a id="org5ce0cfb"></a>
+<a id="orge11515d"></a>
 
 # 関数型のデメリット
 
 -   メモリと速度
-    再帰
+    JavaScript再帰
 -   制限が多い
 
 
-<a id="orgb10088d"></a>
+<a id="orgd904809"></a>
 
 # オブジェクト指向との関係
 
@@ -289,9 +304,11 @@ Quiz: 出力結果は？
     <https://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html>
 
 
-<a id="orge29552f"></a>
+<a id="org580c9a8"></a>
 
 # まとめ
 
 -   副作用を注意しましょう
+
+
 
