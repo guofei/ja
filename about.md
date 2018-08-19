@@ -8,30 +8,31 @@ public: true
 ## Experience
 Yahoo! Japan
 : *Engineer*
-  __2017-07-01 ~__
+  2017-07-01 ~
+  more here
   
 QuickMesh Corporation
 : *Engineer*
-  __2013-04-01 ~ 2017-06-30__
-
+  2013-04-01 ~ 2017-06-30
+  more here
 
 ## Education
 University of Tsukuba
 : *College of Information Science*
-__2007-04-01 ~ 2011-03-31__
+  2007-04-01 ~ 2011-03-31
 
 Graduate School of SIE, University of Tsukuba
 : *Department of Computer Science*
-__2011-04-01 ~ 2013-03-31__
+  2011-04-01 ~ 2013-03-31
 
 ## Skills
-- Ruby on Rails
-- Python
 - C/C++
-- JavaScript
-- React
 - Elixir
+- JavaScript
 - Lisp
+- Python
+- React
+- Ruby on Rails
 
 ## My side projects
 
