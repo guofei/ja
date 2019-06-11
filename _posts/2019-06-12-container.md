@@ -112,7 +112,7 @@ Docker/K8S の知識が大変重要
 # Docker
 
 よくある理解(誤解？)：アプリは Docker の上に動いている
-![img](docker1.png)
+![img](/assets/docker1.png)
 
 
 <a id="org26fbbd2"></a>
@@ -161,7 +161,7 @@ Docker 上で Host OS と異なる Process System があるように見える
 
 ## Docker は helper 的な存在(K8S も)
 
-![img](docker2.png)
+![img](/assets/docker2.png)
 
 
 <a id="orgd391c51"></a>
@@ -255,7 +255,7 @@ Docker では Mount Namespace を使っている
 
 ## nodejs の例
 
-![img](mountos.png)
+![img](/assets/mountos.png)
 
 
 <a id="org42d213a"></a>
